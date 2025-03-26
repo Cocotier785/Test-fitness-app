@@ -7,17 +7,17 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>Récapitulatif</h1>
+  <h1>Récapitulatife</h1>
   <div id="resultat"></div>
 
   <script>
-    const script = document.createElement("script");
-    script.src = "https://cdn.botpress.cloud/webchat/v2.2/webchat.js";
-    script.async = true;
+    const bpScript = document.createElement("script");
+    bpScript.src = "https://cdn.botpress.cloud/webchat/v2.2/webchat.js";
+    bpScript.defer = true;
   
-    script.onload = () => {
+    bpScript.onload = () => {
       const interval = setInterval(() => {
-        if (window.botpressWebChat && window.botpressWebChat.init) {
+        if (window.botpressWebChat?.init) {
           window.botpressWebChat.init({
             composerPlaceholder: "Parle à Coach IA...",
             botId: "10900366-1a4c-4f08-b691-a34fa3ebcd32",
@@ -32,16 +32,16 @@
             frontendVersion: "v2.2"
           });
   
-          // 👇 Affiche manuellement le chat à l'écran
+          // 👇 Affiche le bot
           window.botpressWebChat.sendEvent({ type: "show" });
-  
           clearInterval(interval);
         }
       }, 100);
     };
   
-    document.head.appendChild(script);
+    document.head.appendChild(bpScript);
   </script>
+  
   
   
 
