@@ -1,0 +1,26 @@
+<!-- resultat.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach AI - Résultats</title>
+</head>
+<body>
+  <h1>Récapitulatif de votre profil</h1>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const jours = urlParams.getAll('jours');
+
+    document.write(`<p>👤 Bonjour ${urlParams.get('prenom')} ${urlParams.get('nom')} !</p>`);
+    document.write(`<p>🎯 Objectif : ${urlParams.get('objectif')}</p>`);
+    document.write(`<p>👫 Sexe : ${urlParams.get('sexe')}, Âge : ${urlParams.get('age')} ans</p>`);
+    document.write(`<p>📏 Taille : ${urlParams.get('taille')} cm, ⚖️ Poids : ${urlParams.get('poids')} kg</p>`);
+    document.write(`<p>🏋️ Niveau : ${urlParams.get('niveau')}</p>`);
+    document.write(`<p>📅 Jours disponibles : ${jours.join(', ')}</p>`);
+    document.write(`<p>⏱️ Durée max par séance : ${urlParams.get('duree')} minutes</p>`);
+    document.write(`<p>⚠️ Contraintes physiques : ${urlParams.get('contraintes') || 'Aucune'}</p>`);
+    document.write(`<p>🧰 Matériel disponible : ${urlParams.get('materiel')}</p>`);
+  </script>
+</body>
+</html>
