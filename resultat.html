@@ -13,19 +13,26 @@
   <!-- Webchat Botpress -->
   <script src="https://cdn.botpress.cloud/webchat/v2.2/webchat.js"></script>
 <script>
-  window.botpressWebChat.init({
-    "composerPlaceholder": "Parle à Coach IA...",
-    "botId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
-    "hostUrl": "https://cdn.botpress.cloud/webchat/v2.2",
-    "messagingUrl": "https://messaging.botpress.cloud",
-    "clientId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
-    "webhookId": "20250326165406-C4UMXZZ6",
-    "lazySocket": true,
-    "themeName": "prism",
-    "botName": "Coach IA",
-    "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/aeea5146-fad8-4c9a-b6d2-8edbbf48bd03/v62126/style.css",
-    "frontendVersion": "v2.2"
+  window.addEventListener("load", function () {
+    if (window.botpressWebChat) {
+      window.botpressWebChat.init({
+        "composerPlaceholder": "Parle à Coach IA...",
+        "botId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v2.2",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
+        "webhookId": "20250326165406-C4UMXZZ6",
+        "lazySocket": true,
+        "themeName": "prism",
+        "botName": "Coach IA",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/aeea5146-fad8-4c9a-b6d2-8edbbf48bd03/v62126/style.css",
+        "frontendVersion": "v2.2"
+      });
+    } else {
+      console.error("Botpress WebChat n'est pas chargé");
+    }
   });
 </script>
+
 </body>
 </html>
