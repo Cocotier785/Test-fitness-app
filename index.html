@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Coach IA - Formulaire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Coach IA - Programme Sportif Personnalisé</h1>
+  <form id="formulaire" action="resultat.html" method="GET">
+    <label>Prénom : <input type="text" name="nom" required></label>
+    <label>Objectif : <textarea name="objectif" required></textarea></label>
+
+    <label>Sexe :</label>
+    <select name="sexe" required>
+      <option value="Homme">Homme</option>
+      <option value="Femme">Femme</option>
+    </select>
+
+    <label>Âge : <input type="number" name="age" required></label>
+    <label>Taille (cm) : <input type="number" name="taille" required></label>
+    <label>Poids (kg) : <input type="number" name="poids" required></label>
+
+    <label>Niveau sportif :</label>
+    <select name="niveau" required>
+      <option value="Débutant">Débutant (moins de 6 mois / jamais réellement commencé)</option>
+      <option value="Intermédiaire">Intermédiaire (entre 6 et 2 ans)</option>
+      <option value="Avancé">Avancé (plus de 2 ans)</option>
+    </select>
+
+    <label>Jours disponibles :</label>
+    <div class="jours">
+      <label><input type="checkbox" name="jours" value="Lundi"> Lundi</label>
+      <label><input type="checkbox" name="jours" value="Mardi"> Mardi</label>
+      <label><input type="checkbox" name="jours" value="Mercredi"> Mercredi</label>
+      <label><input type="checkbox" name="jours" value="Jeudi"> Jeudi</label>
+      <label><input type="checkbox" name="jours" value="Vendredi"> Vendredi</label>
+      <label><input type="checkbox" name="jours" value="Samedi"> Samedi</label>
+      <label><input type="checkbox" name="jours" value="Dimanche"> Dimanche</label>
+    </div>
+
+    <label>Durée maximale par séance (minutes) : <input type="number" name="duree" required></label>
+
+    <label>Contraintes physiques (blessures, handicaps...) : <textarea name="contraintes"></textarea></label>
+
+    <label>Matériel disponible :</label>
+    <select name="materiel" required>
+      <option value="Salle de sport">Salle de sport</option>
+      <option value="Poids de corps">Poids de corps</option>
+      <option value="Haltères / Matériel maison">Haltères / Matériel maison</option>
+      <option value="Aucun">Aucun matériel</option>
+    </select>
+
+    <button type="submit">Envoyer</button>
+  </form>
+</body>
+</html>

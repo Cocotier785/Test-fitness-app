@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Coach IA - Résultat</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>Récapitulatif</h1>
+  <div id="resultat"></div>
+
+  <!-- Webchat Botpress -->
+  <script src="https://cdn.botpress.cloud/webchat/v2.2/webchat.js"></script>
+  <script>
+    window.botpressWebChat.init({
+      "composerPlaceholder": "Discutons de ton programme !",
+      "botId": "8d1d9e25-59ed-41bb-8e6b-87d60c6c45e2",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v2.2",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
+      "webhookId": "c638ef97-0e2e-4672-b232-e430a0ee3000",
+      "lazySocket": true,
+      "themeName": "prism",
+      "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/C4UMXZZ6.css",
+      "showPoweredBy": false,
+      "theme": "default",
+      "enableConversationDeletion": true,
+    });
+  </script>
+</body>
+</html>
