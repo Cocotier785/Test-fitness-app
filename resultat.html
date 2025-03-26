@@ -11,10 +11,10 @@
   <div id="resultat"></div>
 
   <!-- Webchat Botpress -->
-  <script src="https://cdn.botpress.cloud/webchat/v2.2/webchat.js"></script>
-<script>
-  window.addEventListener("load", function () {
-    if (window.botpressWebChat) {
+  <script>
+    const script = document.createElement('script');
+    script.src = "https://cdn.botpress.cloud/webchat/v2.2/webchat.js";
+    script.onload = () => {
       window.botpressWebChat.init({
         "composerPlaceholder": "Parle à Coach IA...",
         "botId": "10900366-1a4c-4f08-b691-a34fa3ebcd32",
@@ -28,11 +28,8 @@
         "stylesheet": "https://webchat-styler-css.botpress.app/prod/code/aeea5146-fad8-4c9a-b6d2-8edbbf48bd03/v62126/style.css",
         "frontendVersion": "v2.2"
       });
-    } else {
-      console.error("Botpress WebChat n'est pas chargé");
-    }
-  });
-</script>
-
+    };
+    document.head.appendChild(script);
+  </script>
 </body>
 </html>
