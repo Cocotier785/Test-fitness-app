@@ -1,56 +1,118 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Coach IA - Formulaire</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Fitness App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.8rem 2rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .program-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      max-width: 600px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <h1>Coach IA - Programme Sportif Personnalisé</h1>
-  <form id="formulaire" action="resultat.html" method="GET">
-    <label>Prénom : <input type="text" name="nom" required></label>
-    <label>Objectif : <textarea name="objectif" required></textarea></label>
+  <h1>Générateur de Programme Fitness</h1>
+  <form id="fitnessForm">
+    <label for="age">Âge</label>
+    <input type="number" id="age" name="age" required />
 
-    <label>Sexe :</label>
-    <select name="sexe" required>
+    <label for="sexe">Sexe</label>
+    <select id="sexe" name="sexe">
       <option value="Homme">Homme</option>
       <option value="Femme">Femme</option>
     </select>
 
-    <label>Âge : <input type="number" name="age" required></label>
-    <label>Taille (cm) : <input type="number" name="taille" required></label>
-    <label>Poids (kg) : <input type="number" name="poids" required></label>
+    <label for="taille">Taille (en cm)</label>
+    <input type="number" id="taille" name="taille" required />
 
-    <label>Niveau sportif :</label>
-    <select name="niveau" required>
-      <option value="Débutant">Débutant (moins de 6 mois / jamais réellement commencé)</option>
-      <option value="Intermédiaire">Intermédiaire (entre 6 et 2 ans)</option>
-      <option value="Avancé">Avancé (plus de 2 ans)</option>
-    </select>
+    <label for="poids">Poids (en kg)</label>
+    <input type="number" id="poids" name="poids" required />
 
-    <label>Jours disponibles :</label>
-    <div class="jours">
-      <label><input type="checkbox" name="jours" value="Lundi"> Lundi</label>
-      <label><input type="checkbox" name="jours" value="Mardi"> Mardi</label>
-      <label><input type="checkbox" name="jours" value="Mercredi"> Mercredi</label>
-      <label><input type="checkbox" name="jours" value="Jeudi"> Jeudi</label>
-      <label><input type="checkbox" name="jours" value="Vendredi"> Vendredi</label>
-      <label><input type="checkbox" name="jours" value="Samedi"> Samedi</label>
-      <label><input type="checkbox" name="jours" value="Dimanche"> Dimanche</label>
-    </div>
+    <label for="objectif">Objectif</label>
+    <input type="text" id="objectif" name="objectif" placeholder="Ex : Sèche rapide sans cardio..." required />
 
-    <label>Durée maximale par séance (minutes) : <input type="number" name="duree" required></label>
-
-    <label>Contraintes physiques (blessures, handicaps...) : <textarea name="contraintes"></textarea></label>
-
-    <label>Matériel disponible :</label>
-    <select name="materiel" required>
-      <option value="Salle de sport">Salle de sport</option>
-      <option value="Poids de corps">Poids de corps</option>
-      <option value="Haltères / Matériel maison">Haltères / Matériel maison</option>
-      <option value="Aucun">Aucun matériel</option>
-    </select>
-    <button type="submit">Envoyer</button>
+    <button type="submit">Confirmer</button>
   </form>
+
+  <div class="program-container" id="programme" style="display: none;"></div>
+
+  <script>
+    const form = document.getElementById('fitnessForm');
+    const programmeContainer = document.getElementById('programme');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+
+      // Simule l'envoi vers le webhook n8n
+      const response = await fetch('https://n8n-coach.onrender.com/webhook-test/9ff77c3f-3287-4351-a4a3-8e4f06525f3c', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          test: `Sexe : ${data.sexe}, ${data.age} ans, ${data.taille} cm, ${data.poids} kg, Objectif : ${data.objectif}`
+        })
+      });
+
+      const result = await response.json();
+      programmeContainer.style.display = 'block';
+      programmeContainer.innerHTML = `<h2>Ton programme personnalisé</h2><p>${result.content}</p>`;
+    });
+  </script>
 </body>
 </html>
